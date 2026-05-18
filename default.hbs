@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" class="{{body_class}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{meta_title}}</title>
+  <link rel="canonical" href="{{canonical_url}}">
+
+  {{! Open Graph }}
+  <meta property="og:site_name" content="{{@site.title}}">
+  <meta property="og:type"      content="website">
+  <meta property="og:title"     content="{{meta_title}}">
+  {{#if @site.cover_image}}
+    <meta property="og:image" content="{{img_url @site.cover_image size="l"}}">
+  {{/if}}
+
+  {{! Twitter card }}
+  <meta name="twitter:card"  content="summary_large_image">
+  <meta name="twitter:title" content="{{meta_title}}">
+
+  {{! Feeds }}
+  <link rel="alternate" type="application/rss+xml" title="{{@site.title}}" href="{{@site.url}}/rss/">
+
+  {{! Fonts }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  {{! Theme styles }}
+  <link rel="stylesheet" href="{{asset "css/screen.css"}}">
+  <link rel="stylesheet" href="{{asset "css/audio.css"}}">
+
+  {{ghost_head}}
+</head>
+
+<body class="{{body_class}}">
+<div class="gh-viewport">
+
+  {{> header}}
+
+  <main class="gh-main">
+    {{{body}}}
+  </main>
+
+  {{> footer}}
+
+</div>
+
+<script src="{{asset "js/main.js"}}"></script>
+<script src="{{asset "js/audio-player.js"}}"></script>
+
+{{ghost_foot}}
+</body>
+</html>

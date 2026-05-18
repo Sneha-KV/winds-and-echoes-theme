@@ -1,0 +1,55 @@
+{{! Site header — sticky, shows on all pages }}
+
+<header class="gh-head">
+  <div class="gh-head-inner">
+
+    {{! Logo / site name }}
+    <a class="gh-head-brand" href="{{@site.url}}">
+      {{#if @site.logo}}
+        <img
+          class="gh-head-logo"
+          src="{{@site.logo}}"
+          alt="{{@site.title}}"
+          loading="lazy"
+        >
+      {{/if}}
+      {{#unless @custom.site_header_style}}
+        <span class="gh-head-title">{{@site.title}}</span>
+      {{/unless}}
+      {{#match @custom.site_header_style "Logo and name"}}
+        <span class="gh-head-title">{{@site.title}}</span>
+      {{/match}}
+      {{#match @custom.site_header_style "Name only"}}
+        <span class="gh-head-title">{{@site.title}}</span>
+      {{/match}}
+    </a>
+
+    {{! Primary nav }}
+    <nav class="gh-head-nav" aria-label="Main navigation">
+      {{navigation}}
+    </nav>
+
+    {{! Dark mode toggle + search }}
+    <div class="gh-head-actions">
+      <button class="gh-dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="gh-dark-toggle-icon gh-dark-toggle-light">☀</span>
+        <span class="gh-dark-toggle-icon gh-dark-toggle-dark">☾</span>
+      </button>
+      {{#if @site.members_enabled}}
+        <a class="gh-head-btn" href="#/portal">Subscribe</a>
+      {{/if}}
+    </div>
+
+    {{! Mobile menu toggle }}
+    <button class="gh-burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+
+  {{! Mobile nav drawer }}
+  <nav class="gh-head-nav-mobile" aria-label="Mobile navigation" aria-hidden="true">
+    {{navigation}}
+  </nav>
+
+</header>

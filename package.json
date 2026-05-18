@@ -1,0 +1,22 @@
+{
+  "name": "winds-and-echoes-theme",
+  "description": "Custom Ghost theme for Winds & Echoes adventure travel blog",
+  "version": "1.0.0",
+  "author": {
+    "name": "Winds & Echoes",
+    "email": "hello@windsandechoes.com"
+  },
+  "engines": {
+    "ghost": ">=6.0.0",
+    "ghost-api": "v5"
+  },
+  "scripts": {
+    "dev":  "ghost dev",
+    "zip":  "npm pack",
+    "lint": "npx gscan ."
+  },
+  "devDependencies": {
+    "gscan": "^4.0.0"
+  },
+  "keywords": ["ghost-theme", "adventure", "travel", "photography"]
+}

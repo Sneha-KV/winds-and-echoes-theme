@@ -1,0 +1,28 @@
+{{!< default}}
+
+{{! Static page (About, Contact, Start Here, etc.) }}
+
+<article class="gh-page {{post_class}}">
+
+  <header class="gh-page-header gh-canvas">
+    <h1 class="gh-page-title">{{title}}</h1>
+    {{#if excerpt}}
+      <p class="gh-page-excerpt">{{excerpt}}</p>
+    {{/if}}
+  </header>
+
+  {{#if feature_image}}
+    <figure class="gh-page-image">
+      <img
+        src="{{img_url feature_image size="l"}}"
+        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+        loading="lazy"
+      >
+    </figure>
+  {{/if}}
+
+  <div class="gh-content gh-canvas">
+    {{content}}
+  </div>
+
+</article>

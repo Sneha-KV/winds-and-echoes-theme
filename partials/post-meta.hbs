@@ -1,0 +1,12 @@
+{{! Post meta — author name, date, reading time }}
+{{! Used in post header and post cards }}
+
+<div class="gh-post-meta">
+  {{#primary_author}}
+    <span class="gh-post-author">{{name}}</span>
+  {{/primary_author}}
+  <span class="gh-post-meta-sep">·</span>
+  <time class="gh-post-date" datetime="{{date format="YYYY-MM-DD"}}">
+    {{date format="MMM D, YYYY"}}
+  </time>
+</div>
