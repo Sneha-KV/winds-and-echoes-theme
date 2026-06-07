@@ -1,0 +1,94 @@
+{{!< default}}
+
+<article class="gh-article {{post_class}}">
+
+  <header class="gh-article-header">
+    <div class="gh-article-header-inner">
+      {{#if tags}}
+        <div class="gh-article-tags-header">
+          {{#foreach tags}}
+            <a class="gh-tag-pill" href="{{url}}">{{name}}</a>
+          {{/foreach}}
+        </div>
+      {{/if}}
+      <h1 class="gh-article-title">{{title}}</h1>
+      {{#if excerpt}}
+        <p class="gh-article-excerpt">{{excerpt}}</p>
+      {{/if}}
+      <div class="gh-article-meta">
+        {{> "post-meta"}}
+        <span class="gh-reading-time">{{reading_time}}</span>
+      </div>
+    </div>
+  </header>
+
+  {{! Audio player }}
+  {{> "audio-player"}}
+
+  {{! Hero image }}
+  {{#if feature_image}}
+    <figure class="gh-article-image">
+      <img
+        srcset="
+          {{img_url feature_image size="s"}}  800w,
+          {{img_url feature_image size="m"}} 1200w,
+          {{img_url feature_image size="l"}} 1600w
+        "
+        sizes="(min-width: 1200px) 1200px, 100vw"
+        src="{{img_url feature_image size="m"}}"
+        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+        loading="eager"
+      >
+      {{#if feature_image_caption}}
+        <figcaption>{{feature_image_caption}}</figcaption>
+      {{/if}}
+    </figure>
+  {{/if}}
+
+  {{! Post content }}
+  <div class="gh-content gh-canvas">
+    {{content}}
+  </div>
+
+  {{! Post tags }}
+  {{#if tags}}
+    <div class="gh-article-tags gh-canvas">
+      <span class="gh-tags-label">Tagged</span>
+      {{#foreach tags}}
+        <a class="gh-tag-pill {{#if @index}}{{#if (eq name "Featured")}}gh-tag-pill-rose{{/if}}{{/if}}" href="{{url}}">{{name}}</a>
+      {{/foreach}}
+    </div>
+  {{/if}}
+
+  {{! Author bio }}
+  <footer class="gh-article-footer gh-canvas">
+    {{#primary_author}}
+      <div class="gh-author-box">
+        {{#if profile_image}}
+          <img class="gh-author-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
+        {{/if}}
+        <div class="gh-author-info">
+          <a class="gh-author-name" href="{{url}}">{{name}}</a>
+          {{#if bio}}
+            <p class="gh-author-bio">{{bio}}</p>
+          {{/if}}
+        </div>
+      </div>
+    {{/primary_author}}
+  </footer>
+
+</article>
+
+{{! Related posts }}
+{{#get "posts" filter="tags:[{{tags.[0].slug}}]+id:-{{id}}" limit="3"}}
+  {{#if posts}}
+    <section class="gh-related gh-canvas">
+      <div class="gh-related-title">More adventures</div>
+      <div class="gh-post-grid gh-post-grid-3">
+        {{#foreach posts}}
+          {{> "post-card"}}
+        {{/foreach}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}

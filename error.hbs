@@ -1,0 +1,9 @@
+{{!< default}}
+<div class="gh-error gh-canvas">
+  <h1 class="gh-error-code">{{statusCode}}</h1>
+  <p class="gh-error-message">
+    {{#is "404"}}This trail doesn't exist — looks like you took a wrong turn.
+    {{else}}Something went wrong out here in the wilderness.{{/is}}
+  </p>
+  <a class="btn-primary" href="{{@site.url}}">Back to base camp →</a>
+</div>

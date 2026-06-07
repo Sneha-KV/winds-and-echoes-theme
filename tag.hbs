@@ -1,0 +1,21 @@
+{{!< default}}
+<div class="gh-tag-archive">
+  <header class="gh-tag-header gh-canvas">
+    {{#if tag.feature_image}}
+      <div class="gh-tag-cover">
+        <img src="{{img_url tag.feature_image size="l"}}" alt="{{tag.name}}">
+      </div>
+    {{/if}}
+    <h1 class="gh-tag-name">{{tag.name}}</h1>
+    {{#if tag.description}}<p class="gh-tag-description">{{tag.description}}</p>{{/if}}
+    <span class="gh-tag-count">{{plural ../pagination.total empty="No posts" singular="% post" plural="% posts"}}</span>
+  </header>
+  <section class="gh-feed">
+    <div class="gh-feed-inner">
+      <div class="gh-post-grid">
+        {{#foreach posts}}{{> "post-card"}}{{/foreach}}
+      </div>
+      {{pagination}}
+    </div>
+  </section>
+</div>

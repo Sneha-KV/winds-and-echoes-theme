@@ -1,0 +1,124 @@
+/* =============================================================================
+   Winds & Echoes — Audio Player v2
+   Pastel sage palette, matches screen.css v2
+   ============================================================================= */
+
+.wae-audio-player {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin: 0 0 2rem;
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Audio-first layout */
+.gh-article.audio-first .wae-audio-player {
+  background: var(--sage);
+  border-color: var(--sage-dk);
+  margin-bottom: 2.5rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.gh-article.audio-first .wae-play-btn      { background: #FFF; color: var(--sage); }
+.gh-article.audio-first .wae-progress-fill { background: #FFF; }
+.gh-article.audio-first .wae-progress-bar  { background: rgba(255,255,255,.25); }
+.gh-article.audio-first .wae-time-current,
+.gh-article.audio-first .wae-time-total,
+.gh-article.audio-first .wae-track-label   { color: rgba(255,255,255,.75); }
+.gh-article.audio-first .wae-speed-btn,
+.gh-article.audio-first .wae-download-btn  { color: rgba(255,255,255,.75); border-color: rgba(255,255,255,.3); }
+.gh-article.audio-first .wae-audio-tab     { color: rgba(255,255,255,.6); border-color: rgba(255,255,255,.2); }
+.gh-article.audio-first .wae-audio-tab.active { color: #FFF; border-color: #FFF; background: rgba(255,255,255,.15); }
+
+/* Tabs */
+.wae-audio-tabs { display: flex; gap: 6px; margin-bottom: .875rem; flex-wrap: wrap; }
+
+.wae-audio-tab {
+  padding: .25rem .75rem;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  font-family: var(--font);
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.wae-audio-tab.active { background: var(--sage); color: #FFF; border-color: var(--sage); }
+
+/* Controls row */
+.wae-audio-controls { display: flex; align-items: center; gap: .875rem; }
+
+/* Play button — sage accent */
+.wae-play-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: #FFF;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0;
+  transition: background .15s, transform .1s;
+}
+
+.wae-play-btn:active  { transform: scale(.95); }
+.wae-play-btn:hover   { background: var(--sage-dk); }
+.wae-play-btn svg     { width: 20px; height: 20px; }
+
+/* Progress */
+.wae-progress-wrap { flex: 1; display: flex; flex-direction: column; gap: .375rem; min-width: 0; }
+
+.wae-progress-bar {
+  position: relative; height: 4px;
+  background: var(--border); border-radius: 99px; cursor: pointer;
+}
+
+.wae-progress-fill {
+  position: absolute; left: 0; top: 0; height: 100%;
+  background: var(--sage); border-radius: 99px;
+  pointer-events: none; width: 0%;
+  transition: width .1s linear;
+}
+
+.wae-progress-thumb {
+  position: absolute; top: 50%; transform: translate(-50%,-50%);
+  width: 12px; height: 12px;
+  background: var(--sage); border-radius: 50%; left: 0%;
+  pointer-events: none; opacity: 0; transition: opacity .15s;
+}
+
+.wae-progress-bar:hover .wae-progress-thumb { opacity: 1; }
+
+.wae-time-row { display: flex; align-items: center; justify-content: space-between; font-size: .75rem; color: var(--ink-muted); }
+
+.wae-track-label { font-size: .75rem; color: var(--ink-muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 200px; text-align: center; }
+
+/* Actions */
+.wae-audio-actions { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
+
+.wae-speed-btn,
+.wae-download-btn {
+  padding: .25rem .5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: .75rem; font-weight: 700;
+  color: var(--ink-muted);
+  background: transparent; cursor: pointer;
+  font-family: var(--font);
+  text-decoration: none;
+  transition: color .15s, border-color .15s;
+}
+
+.wae-speed-btn:hover,
+.wae-download-btn:hover { color: var(--sage); border-color: var(--sage-mid); }
+
+/* Responsive */
+@media (max-width: 480px) {
+  .wae-audio-actions { display: none; }
+  .wae-track-label   { display: none; }
+}

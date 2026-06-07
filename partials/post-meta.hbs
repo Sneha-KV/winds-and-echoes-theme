@@ -1,0 +1,11 @@
+<div class="gh-post-meta">
+  {{#primary_author}}
+    {{#if profile_image}}
+      <img class="gh-article-author-img" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
+    {{/if}}
+    <span class="gh-article-author-name">{{name}}</span>
+  {{/primary_author}}
+  <time class="gh-post-date" datetime="{{date format="YYYY-MM-DD"}}">
+    {{date format="MMM D, YYYY"}}
+  </time>
+</div>

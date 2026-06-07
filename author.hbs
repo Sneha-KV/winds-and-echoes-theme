@@ -1,0 +1,20 @@
+{{!< default}}
+<div class="gh-tag-archive">
+  <header class="gh-tag-header gh-canvas">
+    {{#if author.profile_image}}
+      <div class="gh-author-avatar-lg">
+        <img src="{{img_url author.profile_image size="s"}}" alt="{{author.name}}">
+      </div>
+    {{/if}}
+    <h1 class="gh-tag-name">{{author.name}}</h1>
+    {{#if author.bio}}<p class="gh-tag-description">{{author.bio}}</p>{{/if}}
+  </header>
+  <section class="gh-feed">
+    <div class="gh-feed-inner">
+      <div class="gh-post-grid">
+        {{#foreach posts}}{{> "post-card"}}{{/foreach}}
+      </div>
+      {{pagination}}
+    </div>
+  </section>
+</div>
